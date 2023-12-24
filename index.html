@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="js/script.js"></script>
   <title>Password generator</title>
 </head>
 <body>
@@ -38,7 +40,7 @@
             <h4 class="text-l font-bold mt-2 dark:text-black">Type</h4>
             <div class="relative inline-block text-left">
               <div>
-                  <button type="button" class="inline-flex justify-center w-full px-6 py-2 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                  <button type="button" class="type-button-collapse inline-flex justify-center w-full px-6 py-2 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
                       Secret
                       <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                           <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 01.707-.293h8a1 1 0 010 2H6a1 1 0 01-.707-1.293z" clip-rule="evenodd" />
@@ -49,7 +51,7 @@
               </div>
           
               <!-- Dropdown menu -->
-              <div class="absolute right-0 z-50 mt-2 w-32 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" style="display:none;">
+              <div class="type-dropdown-menu absolute right-0 z-50 mt-2 w-32 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" style="display:none;">
                   <div class="py-1" role="none">
                       <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="menu-item-0">Secret</a>
                       <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="menu-item-1">Password</a>
@@ -62,15 +64,15 @@
 
           <div class="flex items-center mt-4">
             <label for="slider" class="mr-2 font-bold">Characters</label>
-            <input type="range" id="slider" name="slider" min="0" max="100" value="20" class="slider w-full mx-4">
+            <input type="range" id="slider sliderTest" name="slider" min="0" max="100" value="20" class="slider w-full mx-4">
             <input type="text" id="sliderValue" name="sliderValue" min="0" max="100" value="20" class="w-20 text-center border border-gray-200 rounded-md py-2">  
           </div>
 
           <div class="flex justify-between mt-6">
             <label for="slider" class="mr-2 font-bold">Numbers</label>
             <label class="relative inline-flex items-center cursor-pointer">
-              <input type="checkbox" value="" class="sr-only peer" checked>
-              <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+              <input type="checkbox" value="" class="numbers-toggle sr-only peer" checked>
+              <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
             </label>
           </div>
           <div class="flex justify-between mt-8">
