@@ -39,7 +39,7 @@
               </svg>
             </button>
             
-        </div>
+          </div>
           <div class="flex flex-col mb-2">
             <input type="text" id="password-input" class="password-input px-4 py-2 mt-2 text-base text-gray-700 border-2 border-gray-200 rounded-md" placeholder="Password" value="">
           </div>
@@ -61,33 +61,95 @@
               <!-- Dropdown menu -->
               <div class="type-dropdown-menu absolute right-0 z-50 mt-2 w-32 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" style="display:none;">
                   <div class="py-1" role="none">
-                      <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="menu-item-0">Secret</a>
-                      <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="menu-item-1">Password</a>
-                      <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="menu-item-2">PIN</a>
-                      <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="menu-item-3">Random ID</a>
+                      <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="password-menu-item">Password</a>
+                      <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="secret-menu-item">Secret</a>
+                      <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="pin-menu-item">PIN</a>
+                      <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="uuid-menu-item">Random ID</a>
                   </div>
               </div>
             </div>
           </div>
 
-          <div class="flex items-center mt-4">
-            <label for="slider" class="mr-2 font-bold">Characters</label>
-            <input type="range" id="slider sliderTest" name="slider" min="0" max="100" value="16" class="slider w-full mx-4">
-            <input type="text" id="sliderValue" name="sliderValue" min="0" max="100" value="16" class="slider-value w-20 text-center border border-gray-200 rounded-md py-2">  
+          <div class="password-item-container">
+            <div class="flex items-center mt-4">
+              <label for="slider" class="mr-2 font-bold">Characters</label>
+              <input type="range" id="slider password-slider" name="slider" min="1" max="100" value="16" class="slider w-full mx-4">
+              <input type="text" id="password-character-value" name="sliderValue" min="1" max="100" value="16" class="slider-value w-20 text-center border border-gray-200 rounded-md py-2">  
+            </div>
+  
+            <div class="flex justify-between mt-6">
+              <label for="slider" class="mr-2 font-bold">Numbers</label>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" value="" class="numbers-toggle w-8 h-8 text-blue-600 bg-gray-100 border-gray-300 rounded dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" checked>
+              </label>
+            </div>
+            <div class="flex justify-between mt-8">
+              <label for="slider" class="mr-2 font-bold">Symbols</label>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" value="" class="symbols-toggle w-8 h-8 text-blue-600 bg-gray-100 border-gray-300 rounded dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" checked>
+              </label>
+            </div>
           </div>
 
-          <div class="flex justify-between mt-6">
-            <label for="slider" class="mr-2 font-bold">Numbers</label>
-            <label class="relative inline-flex items-center cursor-pointer">
-              <input type="checkbox" value="" class="numbers-toggle w-8 h-8 text-blue-600 bg-gray-100 border-gray-300 rounded dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" checked>
-            </label>
+          <div class="pin-item-container hidden">
+            <div class="flex items-center mt-4">
+              <label for="slider" class="mr-2 font-bold">Numbers</label>
+              <input type="range" id="slider pin-slider" name="slider" min="1" max="16" value="4" class="slider w-full mx-4">
+              <input type="text" id="pin-number-slider-value" name="sliderValue" min="1" max="16" value="4" class="slider-value w-20 text-center border border-gray-200 rounded-md py-2">  
+            </div>
           </div>
-          <div class="flex justify-between mt-8">
-            <label for="slider" class="mr-2 font-bold">Symbols</label>
-            <label class="relative inline-flex items-center cursor-pointer">
-              <input type="checkbox" value="" class="symbols-toggle w-8 h-8 text-blue-600 bg-gray-100 border-gray-300 rounded dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" checked>
-            </label>
-          </div>  
+
+          <div class="uuid-item-container hidden">
+            <div class="flex flex-row justify-between mt-4">
+              <h4 class="text-l font-bold mt-2 dark:text-black">Format</h4>
+              <div class="relative inline-block text-left">
+                <div>
+                    <button type="button" class="type-button-collapse inline-flex justify-center w-full px-6 py-2 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                        <span id="format-dropdown-title">UUID</span>
+                        <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 01.707-.293h8a1 1 0 010 2H6a1 1 0 01-.707-1.293z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd" d="M5.293 10.293a1 1 0 01.707-.293h8a1 1 0 010 2H6a1 1 0 01-.707-1.293z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd" d="M5.293 13.293a1 1 0 01.707-.293h8a1 1 0 010 2H6a1 1 0 01-.707-1.293z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+            
+                <!-- Dropdown menu -->
+                <div class="uuid-format-dropdown-menu absolute right-0 z-50 mt-2 w-32 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" style="display:none;">
+                    <div class="py-1" role="none">
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="format-uuid-menu-item">UUID</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="format-cuid-menu-item">CUID</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="format-nanoid-menu-item">Nano ID</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="uuid-version-container flex flex-row justify-between mt-4">
+              <h4 class="text-l font-bold mt-2 dark:text-black">Version</h4>
+              <div class="relative inline-block text-left">
+                <div>
+                    <button type="button" class="type-button-collapse inline-flex justify-center w-full px-6 py-2 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                        <span id="uuid-version-dropdown-title">v4</span>
+                        <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 01.707-.293h8a1 1 0 010 2H6a1 1 0 01-.707-1.293z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd" d="M5.293 10.293a1 1 0 01.707-.293h8a1 1 0 010 2H6a1 1 0 01-.707-1.293z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd" d="M5.293 13.293a1 1 0 01.707-.293h8a1 1 0 010 2H6a1 1 0 01-.707-1.293z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+            
+                <!-- Dropdown menu -->
+                <div class="uuid-version-dropdown-menu absolute right-0 z-50 mt-2 w-32 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" style="display:none;">
+                    <div class="py-1" role="none">
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="uuid-v4-menu-item">v4</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="uuid-v3-menu-item">v3</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="uuid-v2-menu-item">v2</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabindex="-1" id="uuid-v1-menu-item">v1</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </form>
       </div> 
     </div>

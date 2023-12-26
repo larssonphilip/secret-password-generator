@@ -12,6 +12,27 @@ $(document).ready(function () {
             .catch(err => console.error('Error in copying text: ', err));
     });
 
+    $(".type-dropdown-menu").on("click", "a", function (event) {
+        $(".type-dropdown-menu").hide();
+        $("#dropdown-title").text($(this).text());
+        var id = $(this).attr("id");
+
+        $(".password-item-container").hide();
+        $(".pin-item-container").hide();
+        $(".uuid-item-container").hide();
+        $(".secret-info-txt").hide();
+
+        if(id === "password-menu-item") {
+            $(".password-item-container").show();
+        } else if (id === "secret-menu-item") {
+            $(".secret-info-txt").show();
+        } else if (id === "pin-menu-item") {
+            $(".pin-item-container").show();
+        } else if (id === "uuid-menu-item") {
+            $(".uuid-item-container").show();
+        }
+    });
+
     $(".type-button-collapse").click(function () {
         if($(".type-dropdown-menu").is(':visible'))
             $(".type-dropdown-menu").hide();
